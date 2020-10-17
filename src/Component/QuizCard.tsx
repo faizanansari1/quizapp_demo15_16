@@ -9,21 +9,25 @@ const QuestionCard: React.FC<QuestionPropsType> = ({
   // console.log("1", options, "2", question);
 
   let [selectedAns, setSelectedAns] = useState("");
-  const handleSelection = (ev:any) => {
+  const handleSelection = (ev: any) => {
     console.log(ev.target.value);
     setSelectedAns(ev.target.value);
   };
 
   return (
     <div className="question-container">
-      <div className="question">{question}</div>
-      <form onSubmit={(e:React.FormEvent<EventTarget>) =>callback(e, selectedAns)}>
+         <h1>Quiz App</h1>
+      <div className="question">{question}
+</div>
+      <form
+        onSubmit={(e: React.FormEvent<EventTarget>) => callback(e, selectedAns)}
+      >
         {options.map((opt: string, ind: number) => {
           return (
             <div key={ind}>
-              <label>
+              <label className="radios">
                 <input
-                required
+                  required
                   type="radio"
                   name="opt"
                   value={opt}
@@ -35,7 +39,7 @@ const QuestionCard: React.FC<QuestionPropsType> = ({
             </div>
           );
         })}
-        <input type="submit" />
+        <input type="submit" className="submitbtn"/>
       </form>
     </div>
   );
